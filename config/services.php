@@ -34,5 +34,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    
+    'omdb' => [
+        'api_key' => env('OMDB_API_KEY'),
+    ],
 
 ];
