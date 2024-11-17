@@ -8,6 +8,16 @@
     </div>
 
 
-    <!-- Search Results -->
-    
+    @if(!empty($movies))
+        <ul class="mt-4">
+            @foreach($movies as $movie)
+                <li class="border-b p-2">
+                    <a href="{{ url('/movies/' . $movie['imdbID']) }}" class="text-blue-500 hover:underline">
+                        {{ $movie['Title'] }} 
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
+
 </div>
