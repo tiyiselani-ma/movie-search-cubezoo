@@ -16,24 +16,24 @@ class MovieSearch extends Component
             $this->movies = [];
             return;
         }
-        
-        try{
-        //store the response from api
-        $response = Http::get('http://www.omdbapi.com/', [
-            'apikey' => config('services.omdb.api_key'),
-            's' => $this->input,
-        ]);
 
-        //Check if response is successful then assign the response to movies
-        if ($response->successful()) {
-            $this->movies = $response->json()['Search'] ?? [];
-        } else {
+        try {
+            //store the response from api
+            $response = Http::get('http://www.omdbapi.com/', [
+                'apikey' => config('services.omdb.api_key'),
+                's' => $this->input,
+            ]);
+
+            //Check if response is successful then assign the response to movies
+            if ($response->successful()) {
+                $this->movies = $response->json()['Search'] ?? [];
+            } else {
+                $this->movies = [];
+            }
+
+        } catch (\Exception $e) {
             $this->movies = [];
         }
-        
-    } catch (\Exception $e) {
-        $this->movies = [];
-    }
 
     }
     public function render()
