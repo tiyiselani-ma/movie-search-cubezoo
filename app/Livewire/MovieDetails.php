@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class MovieDetails extends Component
 {
@@ -15,7 +16,7 @@ class MovieDetails extends Component
         $this->imdbID = $imdbID;
        
         // Check if the movie details are already cached and cache it for 7 days
-        $this->movieDetails = Cache::remember("movie_details_{$this->imdbID}", now()->addDays0(7), function () {
+        $this->movieDetails = Cache::remember("movie_details_{$this->imdbID}", now()->addDays(7), function () {
             return $this->fetchMovieDetails();
         });
         
