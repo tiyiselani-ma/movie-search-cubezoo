@@ -13,7 +13,12 @@ class MovieDetails extends Component
     public function mount($imdbID)
     {
         $this->imdbID = $imdbID;
-        $this->fetchMovieDetails();
+       
+        // Check if the movie details are already cached and cache it for 7 days
+        $this->movieDetails = Cache::remember("movie_details_{$this->imdbID}", now()->addDays0(7), function () {
+            return $this->fetchMovieDetails();
+        });
+        
     }
 
     public function fetchMovieDetails()
@@ -30,7 +35,7 @@ class MovieDetails extends Component
                 $this->movie = null;
             }
         } catch (\Exception $e) {
-            $this->movies = [];
+            return ['error' => 'Unable to retrieve movie details.'];
         }
     }
 
