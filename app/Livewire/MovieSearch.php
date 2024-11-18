@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Http;
 
 class MovieSearch extends Component
 {
@@ -16,6 +17,7 @@ class MovieSearch extends Component
             return;
         }
         
+        try{
         //store the response from api
         $response = Http::get('http://www.omdbapi.com/', [
             'apikey' => config('services.omdb.api_key'),
@@ -28,6 +30,10 @@ class MovieSearch extends Component
         } else {
             $this->movies = [];
         }
+        
+    } catch (\Exception $e) {
+        $this->movies = [];
+    }
 
     }
     public function render()
