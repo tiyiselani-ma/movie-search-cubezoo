@@ -24,6 +24,8 @@
                 </li>
             @endforeach
         </ul>
+    @elseif(strlen($input) > 0)
+        <p class="mt-4 text-gray-500">No results found for "{{ $input }}"</p>
     @endif
 
 </div>
