@@ -18,16 +18,19 @@ class MovieDetails extends Component
 
     public function fetchMovieDetails()
     {
-       
-        $response = Http::get("http://www.omdbapi.com/", [
-            'apikey' => config('services.omdb.api_key'),
-            'i' => $this->imdbID,
-        ]);
+        try {
+            $response = Http::get("http://www.omdbapi.com/", [
+                'apikey' => config('services.omdb.api_key'),
+                'i' => $this->imdbID,
+            ]);
 
-        if ($response->successful()) {
-            $this->movie = $response->json();
-        } else {
-            $this->movie = null;
+            if ($response->successful()) {
+                $this->movie = $response->json();
+            } else {
+                $this->movie = null;
+            }
+        } catch (\Exception $e) {
+            $this->movies = [];
         }
     }
 
