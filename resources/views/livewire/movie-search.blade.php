@@ -18,7 +18,8 @@
         <ul class="mt-4">
             @foreach ($movies as $movie)
                 <li class="border-b p-2">
-                    <a href="{{ url('/movies/' . $movie['imdbID']) }}" class="text-blue-500 hover:underline">
+                    <a href="{{ route('movie.details', ['imdbID' => $movie['imdbID']]) }}"
+                         class="text-blue-500 hover:underline">
                         {{ $movie['Title'] }}
                     </a>
                 </li>
