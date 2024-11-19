@@ -25,8 +25,8 @@ Ensure your system meets the following requirements:
 
 1. **Clone the Repository**
     ```bash
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/tiyiselani-ma/movie-search-cubezoo.git
+    cd movie-search-cubezoo
     ```
 
 2. **Install Dependencies**
