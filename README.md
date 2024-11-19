@@ -154,7 +154,3 @@ The tests cover:
 - Add user authentication to personalize trending movie results.
 - Implement advanced search filters (e.g., genre, year, or IMDb rating).
 - Include pagination for large search results.
-
-## Submission Instructions
-
-Ensure your project is pushed to a public GitHub repository. Share the repository link for review.
